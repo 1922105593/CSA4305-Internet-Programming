@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('ecom.png');
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.account-container {
+    width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.welcome-title {
+    background-color: #3498db; /* Different background color */
+    color: white;
+    padding: 15px;
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.bills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.bill-box {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.bill-box h2 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.bill-box p {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.bill-box:hover {
+    background-color: #d1ecf1;
+}

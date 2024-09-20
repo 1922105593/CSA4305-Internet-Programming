@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Bill Payment</title>
+    <link rel="stylesheet" href="payment.css">
+    <script>
+        function showPaymentFields() {
+            const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+            
+            document.getElementById('card-details').style.display = 'none';
+            document.getElementById('upi-details').style.display = 'none';
+            document.getElementById('netbanking-details').style.display = 'none';
+            
+            if (paymentMethod === 'credit_card' || paymentMethod === 'debit_card') {
+                document.getElementById('card-details').style.display = 'block';
+            } else if (paymentMethod === 'upi') {
+                document.getElementById('upi-details').style.display = 'block';
+            } else if (paymentMethod === 'net_banking') {
+                document.getElementById('netbanking-details').style.display = 'block';
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Update the amount due to $0
+            document.getElementById('amount-due').innerText = '$0.00';
+
+            // Optionally, display a confirmation message
+            alert("Payment processed successfully!");
+
+            // Here you could add code to actually handle the form submission, such as using AJAX to send data to the server
+            // For now, we'll just simulate a successful payment
+        }
+    </script>
+</head>
+<body>
+    <div class="payment-container">
+        <h1>Electricity Bill Payment</h1>
+        <p id="amount-due">Amount Due: $80.00</p>
+        <form onsubmit="handleSubmit(event)">
+            <h2>Select Payment Method</h2>
+            <div class="payment-option">
+                <input type="radio" id="credit" name="payment_method" value="credit_card" required onclick="showPaymentFields()">
+                <label for="credit">Credit Card</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="debit" name="payment_method" value="debit_card" required onclick="showPaymentFields()">
+                <label for="debit">Debit Card</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="netbanking" name="payment_method" value="net_banking" required onclick="showPaymentFields()">
+                <label for="netbanking">Net Banking</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="upi" name="payment_method" value="upi" required onclick="showPaymentFields()">
+                <label for="upi">UPI</label>
+            </div>
+
+            <!-- Card Details Section -->
+            <div id="card-details" style="display:none;">
+                <h3>Enter Card Details</h3>
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" name="card_number" placeholder="1234 5678 9123 4567">
+                <label for="expiry-date">Expiry Date:</label>
+                <input type="text" id="expiry-date" name="expiry_date" placeholder="MM/YY">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" placeholder="123">
+            </div>
+
+            <!-- UPI Details Section -->
+            <div id="upi-details" style="display:none;">
+                <h3>Enter UPI ID</h3>
+                <label for="upi-id">UPI ID:</label>
+                <input type="text" id="upi-id" name="upi_id" placeholder="example@upi">
+            </div>
+
+            <!-- Net Banking Details Section -->
+            <div id="netbanking-details" style="display:none;">
+                <h3>Select Your Bank</h3>
+                <label for="bank-name">Bank:</label>
+                <select id="bank-name" name="bank_name">
+                    <option value="bank1">SBI</option>
+                    <option value="bank2">ICICI</option>
+                    <option value="bank3">HDFC</option>
+                    <option value="bank4">AXIS</option>
+                </select>
+            </div>
+
+            <div class="button-box">
+                <button type="submit">Proceed to Pay</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
